@@ -1,0 +1,31 @@
+{
+  "name": "webwizardry/config-kit",
+  "type": "composer-plugin",
+  "description": "The composer plugin for configurations",
+  "license": "BSD-3-Clause",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Alexey Volkov",
+      "email": "webwizardry@hotmail.com"
+    }
+  ],
+  "require": {
+    "composer-plugin-api": "^1.0 | ^2.0",
+    "webwizardry/config-definition": "^1.0",
+    "vlucas/phpdotenv": "^5.0"
+  },
+  "require-dev": {
+    "composer/composer": "^1.0 | ^2.0@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "WebWizardry\\Config\\": "src/"
+    }
+  },
+  "extra": {
+    "class": "WebWizardry\\Config\\Composer\\EventHandler"
+  }
+
+}
