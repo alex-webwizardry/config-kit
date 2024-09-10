@@ -12,12 +12,14 @@
     }
   ],
   "require": {
+    "php": ">=8.3",
     "composer-plugin-api": "^1.0 | ^2.0",
     "webwizardry/config-definition": "^1.0",
     "vlucas/phpdotenv": "^5.0"
   },
   "require-dev": {
-    "composer/composer": "^1.0 | ^2.0@dev"
+    "composer/composer": "^1.0 | ^2.0@dev",
+    "psr/container": "^2.0"
   },
   "autoload": {
     "psr-4": {
