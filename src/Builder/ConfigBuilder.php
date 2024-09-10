@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WebWizardry\Config\Builder;
 
+use Exception;
 use WebWizardry\Config\BaseConfigBuilder;
 use WebWizardry\Config\ApplicationConfigBuilderInterface;
 use WebWizardry\Config\Composer\ComposerFileException;
@@ -24,17 +25,20 @@ final class ConfigBuilder extends BaseConfigBuilder
         $this->runner = new BuildTaskRunner($this->options);
     }
 
+    /**
+     * @throws Exception
+     */
     public function run(): mixed
     {
-        $container = null;
-
         $params = [];
         if ($config = $this->options->getSection('container-params')) {
             $params = $this->runner->run($config);
         }
 
-        print_r($params);
-        die;
+        $container = null;
+        if ($config = $this->options->getSection('container')) {
+            $container = $this->runner->run($config, promoteVariables: ['params' => $params]);
+        }
 
         return $this->appConfigBuilder ? $this->appConfigBuilder->run($container) : [];
     }

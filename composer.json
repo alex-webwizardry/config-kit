@@ -15,7 +15,8 @@
     "php": ">=8.3",
     "composer-plugin-api": "^1.0 | ^2.0",
     "webwizardry/config-definition": "^1.0",
-    "vlucas/phpdotenv": "^5.0"
+    "vlucas/phpdotenv": "^5.0",
+    "webwizardry/container": "^1.0"
   },
   "require-dev": {
     "composer/composer": "^1.0 | ^2.0@dev",
