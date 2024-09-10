@@ -36,7 +36,6 @@ final class CopyFiles extends BaseTask
                     copy($file, $targetFile);
                 }
             }
-
         }
     }
 }

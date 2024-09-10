@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WebWizardry\Config\Base;
 
+use http\Encoding\Stream\Deflate;
 use InvalidArgumentException;
 
 abstract class BaseTask
@@ -17,6 +18,7 @@ abstract class BaseTask
     ){
         $pathParams['{sapi}'] = 'cli' === php_sapi_name() ? 'console' : 'http';
         $this->pathParams = $pathParams;
+        $this->promoteVariables = $promoteVariables;
     }
 
     protected function getRequiredParam(string $name): mixed
@@ -34,8 +36,12 @@ abstract class BaseTask
 
     protected function restorePath(string $path): string
     {
-        print_r($this->pathParams);
         return strtr($path, $this->pathParams);
+    }
+
+    protected function getPromoteVariables(): array
+    {
+        return $this->promoteVariables;
     }
 
     abstract public function run();

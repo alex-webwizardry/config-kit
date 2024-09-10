@@ -15,4 +15,9 @@ final class BuildOptions extends BaseOptions
             defaultConfigFile:      '{root}/config/config.build-plan.php'
         );
     }
+
+    public function getSection(string $sectionName): mixed
+    {
+        return $this->getConfig()[$sectionName] ?? null;
+    }
 }
