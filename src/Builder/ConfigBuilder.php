@@ -40,6 +40,8 @@ final class ConfigBuilder extends BaseConfigBuilder
             $container = $this->runner->run($config, promoteVariables: ['params' => $params]);
         }
 
-        return $this->appConfigBuilder ? $this->appConfigBuilder->run($container) : [];
+        return $this->appConfigBuilder
+            ? $this->appConfigBuilder->run($container, $this->options, $this->runner)
+            : [];
     }
 }
