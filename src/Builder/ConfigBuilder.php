@@ -7,6 +7,7 @@ use Exception;
 use WebWizardry\Config\BaseConfigBuilder;
 use WebWizardry\Config\ApplicationConfigBuilderInterface;
 use WebWizardry\Config\Composer\ComposerFileException;
+use Dotenv\Dotenv;
 
 final class ConfigBuilder extends BaseConfigBuilder
 {
@@ -23,6 +24,10 @@ final class ConfigBuilder extends BaseConfigBuilder
         parent::__construct($rootPath);
         $this->options = new BuildOptions($rootPath);
         $this->runner = new BuildTaskRunner($this->options);
+
+        if (file_exists($this->options->getRootPath() . '/.env')) {
+            Dotenv::createImmutable($this->options->getRootPath())->load();
+        }
     }
 
     /**
