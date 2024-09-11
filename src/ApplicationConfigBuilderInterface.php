@@ -10,8 +10,8 @@ use WebWizardry\Config\Builder\BuildTaskRunner;
 interface ApplicationConfigBuilderInterface
 {
     public function run(
-        ContainerInterface $container = null,
-        BuildOptions $buildOptions = null,
-        BuildTaskRunner $runner = null
+        BuildOptions $buildOptions,
+        BuildTaskRunner $runner,
+        ContainerInterface $container = null
     ): mixed;
 }
