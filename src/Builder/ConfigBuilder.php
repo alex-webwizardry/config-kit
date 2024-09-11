@@ -41,7 +41,7 @@ final class ConfigBuilder extends BaseConfigBuilder
         }
 
         return $this->appConfigBuilder
-            ? $this->appConfigBuilder->run($container, $this->options, $this->runner)
+            ? $this->appConfigBuilder->run($this->options, $this->runner, $container)
             : [];
     }
 }
